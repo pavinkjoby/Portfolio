@@ -72,6 +72,20 @@ body {
   border-radius: 5px;
 }
 
+.abouthtwo{
+  color:#2b5782 ;
+}
+
+#aboutp{
+  font-size: 23px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(87, 86, 85);
+}
+
+
+
+
+
 /* SECTIONS */
 .section {
   padding: 80px 50px;
@@ -83,6 +97,7 @@ body {
   font-size: 2.2rem;
 }
 
+
 /* PROJECTS */
 .projects {
   display: flex;
@@ -92,11 +107,21 @@ body {
 }
 
 .card {
-  background: white;
+  background: rgb(67, 78, 105);
   width: 250px;
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}.projecthtwo{
+  color: #2b5782;
+}
+
+
+.project3{
+  color: white;
+}
+.projectp{
+  color: rgb(176, 176, 37);
 }
 
 /* CONTACT */
