@@ -12,7 +12,7 @@ const Contact = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/send", {
+      const res = await fetch("https://portfolio-nzus.onrender.com/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Contact = () => {
         alert(data.error || "Failed to send message");
       }
     } catch (error) {
-      alert("Server error. Make sure backend is running.");
+      alert("Server error. Please try again.");
       console.error(error);
     }
   };
@@ -41,7 +41,6 @@ const Contact = () => {
 
         <h2>Contact Me</h2>
 
-        {/* EMAIL INPUT */}
         <input
           type="email"
           placeholder="Your Email"
@@ -50,7 +49,6 @@ const Contact = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        {/* MESSAGE */}
         <textarea
           placeholder="Your Message"
           className="contact-textarea"
@@ -58,12 +56,10 @@ const Contact = () => {
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
 
-        {/* SEND BUTTON */}
         <button onClick={handleSend} className="contact-btn">
           Send Message
         </button>
 
-        {/* RESUME */}
         <p className="resume-text">
           Click here to download my resume
         </p>
@@ -72,7 +68,6 @@ const Contact = () => {
           Download Resume
         </a>
 
-        {/* SOCIAL LINKS */}
         <div className="contact-icons">
           <a href="https://www.linkedin.com/in/pavin-k-joby-a561a7305" target="_blank" rel="noreferrer">
             <FaLinkedin />

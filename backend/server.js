@@ -1,23 +1,22 @@
 require("dotenv").config();
 
 const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
+const { Resend } = require("resend");
 
 const app = express();
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+const resend = new Resend(process.env.re_f7zvJTno_LQ9bdNFN3ACii4LUgtjxN8bc);
 
-// Email transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+// Middleware
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+  })
+);
+
+app.use(express.json());
 
 // Test route
 app.get("/", (req, res) => {
@@ -28,21 +27,16 @@ app.get("/", (req, res) => {
 app.post("/send", async (req, res) => {
   const { email, message } = req.body;
 
-  // Basic validation
   if (!email || !message) {
     return res.status(400).json({ error: "Email and message are required" });
   }
 
   try {
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      replyTo: email,
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: process.env.EMAIL_USER,
       subject: "New Message from Portfolio",
-      text: `From: ${email}
-
-Message:
-${message}`,
+      text: `From: ${email}\n\nMessage:\n${message}`,
     });
 
     res.status(200).json({ message: "Email sent successfully" });
@@ -52,7 +46,7 @@ ${message}`,
   }
 });
 
-// ✅ IMPORTANT: Use dynamic port for deployment
+// Port
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
