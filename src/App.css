@@ -1,7 +1,11 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
@@ -43,51 +47,71 @@ body {
   color: #00adb5;
 }
 
-/* HERO */
+/* HERO (UPDATED ONLY THIS SECTION) */
 .hero {
-  height: 90vh;
-  background: linear-gradient(to right, #00adb5, #393e46);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #00adb5, #393e46);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: white;
+  padding: 20px;
 }
 
-.hero h1 {
-  font-size: 3rem;
+/* Animated Name */
+.hero-name {
+  font-family: 'Pacifico', cursive;
+  font-size: 5rem;
+  letter-spacing: 2px;
 }
 
+/* Blinking cursor */
+.hero-name::after {
+  content: "|";
+  margin-left: 6px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Role */
+.hero h2 {
+  margin-top: 10px;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+/* Description */
 .hero p {
-  margin: 15px 0;
-  font-size: 1.2rem;
+  margin: 15px 0 25px;
+  font-size: 1.32rem;
+  max-width: 500px;
+  line-height: 1.6;
 }
 
+/* Button */
 .btn {
   padding: 12px 28px;
   background: #111;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  transition: 0.3s ease;
 }
 
-.abouthtwo{
-  color:#2b5782 ;
+.btn:hover {
+  background: #2c6b6d;
 }
-
-#aboutp{
-  font-size: 23px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: rgb(87, 86, 85);
-}
-
-
-
-
 
 /* SECTIONS */
 .section {
+  min-height: 100vh;
   padding: 80px 50px;
   text-align: center;
 }
@@ -95,8 +119,71 @@ body {
 .section h2 {
   margin-bottom: 20px;
   font-size: 2.2rem;
+  color: #2b5782;
 }
 
+/* ABOUT SECTION */
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #9d9dce;
+  padding: 40px 20px;
+}
+
+.about-card {
+  position: relative;
+  max-width: 999vh;
+  height: 85vh;
+  width: 100%;
+  padding: 40px 25px 25px 25px;
+  border-radius: 15px;
+  background: #6868b1;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Corner heading */
+.about-heading {
+  position: absolute;
+  top: 65px;
+  left: 35px;
+  font-size: 64px;
+  font-weight: 700;
+  color: #b3e3ed;
+}
+
+/* Text */
+.about-text {
+  flex: 1;
+  text-align: left;
+  left: 70px;
+}
+
+.about-text p {
+  font-size: 25px;
+  line-height: 1.5;
+  color: #e0e0e0;
+}
+
+/* Image */
+.profile-img {
+  width: 470px;
+  height: 500px;
+  border-radius: 80%;
+  object-fit: cover;
+  border: 0px solid #6c63ff;
+  transition: 0.5s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.1);
+}
 
 /* PROJECTS */
 .projects {
@@ -112,23 +199,144 @@ body {
   padding: 25px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}.projecthtwo{
-  color: #2b5782;
+  transition: 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+}
 
-.project3{
+.card h3 {
   color: white;
 }
-.projectp{
-  color: rgb(176, 176, 37);
+
+.card p {
+  color: rgb(200, 200, 80);
 }
 
 /* CONTACT */
 #contact p {
   margin: 10px 0;
 }
+/* ================= CONTACT PAGE ================= */
 
+.contact-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #717b8c, #2b5876);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* MAIN BOX */
+.contact-box {
+  background: rgba(70, 83, 114, 0.95);
+  backdrop-filter: blur(4px);
+  padding: 40px;
+  border-radius: 12px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* HEADING */
+.contact-box h2 {
+  margin-bottom: 20px;
+  color: #1dd7e1;
+}
+
+/* INPUTS */
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* TEXTAREA */
+.contact-textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* BUTTON */
+.contact-btn {
+  margin-top: 18px;
+  width: 100%;
+  padding: 12px;
+  background: #00adb5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: #01949a;
+}
+
+/* RESUME TEXT */
+.resume-text {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* RESUME LINK */
+.resume-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #00adb5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
+}
+
+/* ICON LINKS */
+.contact-icons {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 28px;
+}
+
+.contact-icons a {
+  color: white;
+  transition: 0.3s ease;
+}
+
+.contact-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Brand colors */
+.contact-icons a:nth-child(1):hover {
+  color: #0077b5;
+}
+
+.contact-icons a:nth-child(2):hover {
+  color: #333;
+}
+
+.contact-icons a:nth-child(3):hover {
+  color: #ea4335;
+}
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-box {
+    width: 90%;
+    padding: 25px;
+  }
+}
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .navbar {
@@ -139,7 +347,204 @@ body {
     margin-top: 10px;
   }
 
-  .hero h1 {
-    font-size: 2.3rem;
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .about-card {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .profile-img {
+    margin-top: 15px;
+  }
+
+  .about-heading {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+/* ================= PROJECTS CAROUSEL ================= */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* TRACK */
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 520px;
+}
+
+/* ================= CARDS ================= */
+
+.carousel .card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  width: 340px;
+  padding: 25px;
+  border-radius: 12px;
+  background: rgba(98, 118, 167, 0.95);
+  backdrop-filter: blur(2px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+
+  transition: all 0.4s smooth;
+  cursor: pointer;
+}
+
+/* CENTER */
+.carousel .active {
+  transform: translate(-50%, -50%) scale(1.15);
+  z-index: 3;
+  opacity: 1;
+}
+
+/* LEFT */
+.carousel .side.left {
+  transform: translate(-180%, -50%) scale(0.95);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+/* RIGHT */
+.carousel .side.right {
+  transform: translate(80%, -50%) scale(0.95);
+  opacity: 0.6;
+  z-index: 2;
+}
+
+/* HIDDEN */
+.carousel .hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  z-index: 1;
+}
+
+/* ================= EXPANDED MODE ================= */
+
+/* OVERLAY (CLICKABLE) */
+.carousel .overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(123, 118, 118, 0.6);
+  z-index: 1000;
+  cursor: pointer;
+}
+
+/* EXPANDED CARD */
+.carousel .expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 45vw;
+  max-width: 1000px;
+
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: 1001; /* MUST be above overlay */
+
+  opacity: 1;
+}
+
+/* HIDE OTHERS WHEN EXPANDED */
+.carousel.expanded-mode .card:not(.expanded) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================= CONTENT ================= */
+
+/* TEXT */
+.carousel .card p {
+  margin-bottom: 6px;
+}
+
+/* IMAGE (BOTTOM) */
+.carousel .project-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+/* BUTTON */
+.carousel .project-btn {
+  display: block;
+  margin: 20px auto 0;
+  padding: 8px 16px;
+  background: #00adb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.carousel .project-btn:hover {
+  background: #01949a;
+}
+
+/* ================= NAV BUTTONS ================= */
+
+.carousel .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  background: #111;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 50;
+}
+
+.carousel .nav.left {
+  left: -70px;
+}
+
+.carousel .nav.right {
+  right: -70px;
+}
+
+.carousel .nav:hover {
+  background: #00adb5;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .carousel-track {
+    height: auto;
+  }
+
+  .carousel .card {
+    position: static;
+    transform: none !important;
+    width: 100%;
+    margin-bottom: 20px;
+    opacity: 1 !important;
+  }
+
+  .carousel .nav {
+    display: none;
   }
 }
