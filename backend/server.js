@@ -6,7 +6,7 @@ const { Resend } = require("resend");
 
 const app = express();
 
-const resend = new Resend(process.env.Your_Resned_API_Key);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Middleware
 app.use(
