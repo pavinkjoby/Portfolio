@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Test route (optional - for checking server)
+// Test route
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
@@ -39,12 +39,10 @@ app.post("/send", async (req, res) => {
       replyTo: email,
       to: process.env.EMAIL_USER,
       subject: "New Message from Portfolio",
-      text: `
-From: ${email}
+      text: `From: ${email}
 
 Message:
-${message}
-      `,
+${message}`,
     });
 
     res.status(200).json({ message: "Email sent successfully" });
@@ -54,8 +52,9 @@ ${message}
   }
 });
 
-// Start server
-const PORT = 5000;
+// ✅ IMPORTANT: Use dynamic port for deployment
+const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
